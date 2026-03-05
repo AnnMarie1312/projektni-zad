@@ -21,9 +21,11 @@ if (form) {
     let rezervacije = JSON.parse(localStorage.getItem('rezervacije')) || [];
     rezervacije.push(rezervacija);
     localStorage.setItem('rezervacije', JSON.stringify(rezervacije));
-
-    alert('Rezervacija je uspješno spremljena!');
+    // reset forme
     form.reset();
+
+    // preusmjeri na hvala stranicu
+    window.location.href = "hvala.html";
   });
 }
 
@@ -54,5 +56,6 @@ if (document.querySelector("#container") && document.querySelector("#target")) {
       ease: "none"
     });
 }
+
 
 
