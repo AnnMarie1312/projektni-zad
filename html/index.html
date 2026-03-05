@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelWithUs</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul class="nav-menu">
+        
+        <li><a href="index.html">Početna</a></li>
+        <li><a href="destinacije.html">Destinacije</a></li>
+        <li><a href="o-nama.html">O nama</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="#popularno">Popularno</a></li>
+      </ul>
+      <img src="../slike/TravelWithUs.png" class="logo" alt="Logo">
+    </nav>
+
+  </header>
+
+  <!-- HERO (crno na startu, slika se otkriva na scroll) -->
+  <main id="container">
+    <div id="target"></div>
+    <h1 class="hero-title">Dobrodošli u <span>TravelWithUs</span></h1>
+  </main>
+  <section id="popularno" class="popular"></section>
+
+  <section class="popular">
+  <h2>Popularne destinacije</h2>
+
+  <div class="dest-grid">
+    <a class="dest-card" href="pariz.html">
+      <span class="dest-name">Pariz</span>
+    </a>
+
+    <a class="dest-card" href="rim.html">
+      <span class="dest-name">Rim</span>
+    </a>
+
+    <a class="dest-card" href="istanbul.html">
+      <span class="dest-name">Istanbul</span>
+    </a>
+  </div>
+</section>
+
+  <footer>
+    &copy; 2026 TravelWithUs. Sva prava pridržana.
+    
+
+  </footer>
+
+  <!-- GSAP (MORA biti prije JS-a) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!--  JS -->
+  <script src="../js/script.js"></script>
+
+</body>
+</html>
+
+

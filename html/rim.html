@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rim - TravelWithUs</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="index.html">Početna</a></li>
+      <li><a href="destinacije.html">Destinacije</a></li>
+      <li><a href="o-nama.html">O nama</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+
+    </ul>
+    <img src="../slike/TravelWithUs.png" class="logo" alt="Logo">
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO: RIM-->
+  <div class="hero-rim">
+    <h1>Rim</h1>
+  </div>
+
+  <!-- UVOD / OPIS-->
+  <section class="destinacija-blok">
+    <h2>O Rimu</h2>
+    <p class="destinacija-tekst">
+      Rim je vječni grad u kojem se povijest vidi na svakom koraku – od antičkih ruševina do renesansnih trgova.
+      Idealan je za ljubitelje kulture, hrane i šetnji uz gelato u ruci.
+    </p>
+
+    <div class="destinacija-info">
+      <div class="info-kartica">
+        <h3>Najbolje vrijeme</h3>
+        <p>Proljeće i rana jesen (ugodnije i manje gužve).</p>
+      </div>
+      <div class="info-kartica">
+        <h3>Vibe</h3>
+        <p>Povijest, umjetnost, pasta, piazze.</p>
+      </div>
+      <div class="info-kartica">
+        <h3>Preporuka</h3>
+        <p>Trevi navečer + Trastevere za večeru.</p>
+      </div>
+    </div>
+
+    <!-- GUMB REZERVIRAJ -->
+    <button class="btn" id="rezervirajBtn">Rezerviraj</button>
+  </section>
+
+  <!-- MINI PROGRAM -->
+  <section class="destinacija-blok">
+    <h2>Mini program (3 dana)</h2>
+
+    <div class="program">
+      <div class="program-dan">
+        <h3>Dan 1</h3>
+        <p>Koloseum, Forum Romanum, šetnja do Kapitola.</p>
+      </div>
+      <div class="program-dan">
+        <h3>Dan 2</h3>
+        <p>Vatikan, Bazilika sv. Petra, šetnja uz Tiber.</p>
+      </div>
+      <div class="program-dan">
+        <h3>Dan 3</h3>
+        <p>Fontana di Trevi, Španjolske stube, Trastevere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZNAMENITOSTI -->
+  <section class="destinacija-blok">
+    <h2>Znamenitosti</h2>
+    <ul class="lista-znamenitosti">
+      <li>Koloseum</li>
+      <li>Forum Romanum</li>
+      <li>Vatikan</li>
+      <li>Fontana di Trevi</li>
+      <li>Piazza Navona</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 TravelWithUs. Sva prava pridržana.</p>
+</footer>
+
+<!-- SCRIPT: REZERVACIJA-->
+<script>
+  document.getElementById("rezervirajBtn").addEventListener("click", function () {
+    const proizvod = {
+      naziv: "Rim",
+      polazak: "19.5.2026.",
+      povratak: "24.5.2026.",
+      cijena: 650,
+      kolicina: 1
+    };
+
+    localStorage.setItem("kosarica", JSON.stringify(proizvod));
+    window.location.href = "kosarica.html";
+  });
+</script>
+
+</body>
+</html>

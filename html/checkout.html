@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plaćanje - TravelWithUs</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="index.html">Početna</a></li>
+      <li><a href="destinacije.html">Destinacije</a></li>
+      <li><a href="o-nama.html">O nama</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <img src="../slike/TravelWithUs.png" class="logo" alt="Logo">
+  </nav>
+</header>
+
+<main class="checkout-wrap">
+  <h1>Podaci za plaćanje</h1>
+
+  <form id="forma" class="checkout-form">
+    <div class="field">
+      <label>Ime *</label>
+      <input type="text" name="ime" placeholder="Ime" required>
+    </div>
+
+    <div class="field">
+      <label>Prezime *</label>
+      <input type="text" name="prezime" placeholder="Prezime" required>
+    </div>
+
+    <div class="field">
+      <label>Email *</label>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+
+    <div class="field">
+      <label>Broj telefona *</label>
+      <input type="tel" name="telefon" placeholder="Broj telefona" required>
+    </div>
+
+    <button class="btn" type="submit">Naručite</button>
+  </form>
+</main>
+
+<footer>
+  <p>&copy; 2026 TravelWithUs. Sva prava pridržana.</p>
+</footer>
+
+<script>
+  document.getElementById("forma").addEventListener("submit", function (e) {
+    e.preventDefault();
+    localStorage.removeItem("kosarica");
+    window.location.href = "hvala.html";
+  });
+</script>
+
+</body>
+</html>
