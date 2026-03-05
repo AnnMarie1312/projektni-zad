@@ -22,7 +22,7 @@
 
 <main class="hvala-stranica">
   <section class="hvala-kartica">
-    <h1>Hvala na rezervaciji! ✅</h1>
+    <h1 id="poruka">Hvala na rezervaciji! ✅</h1>
     <p>Vaša narudžba je uspješno zaprimljena.</p>
 
     <a class="btn" href="index.html">Povratak na početnu</a>
@@ -35,4 +35,13 @@
 </footer>
 
 </body>
+  <script>
+    const ime = localStorage.getItem("imeKorisnika");
+
+      if (ime) {
+        document.getElementById("poruka").innerText =
+          "Hvala " + ime + " na rezervaciji! ✅";
+}
+</script>
+
 </html>
