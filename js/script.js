@@ -23,6 +23,7 @@ if (form) {
     localStorage.setItem('rezervacije', JSON.stringify(rezervacije));
     // reset forme
     form.reset();
+    localStorage.setItem("imeKorisnika", ime);
 
     // preusmjeri na hvala stranicu
     window.location.href = "hvala.html";
@@ -56,6 +57,7 @@ if (document.querySelector("#container") && document.querySelector("#target")) {
       ease: "none"
     });
 }
+
 
 
 
