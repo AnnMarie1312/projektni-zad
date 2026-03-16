@@ -856,8 +856,8 @@ tbody tr:last-child {
 
 /* Naziv destinacije */
 .stavka-naziv {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
   color: #333;
 }
 
