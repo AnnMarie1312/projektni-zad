@@ -862,13 +862,25 @@ tbody tr:last-child {
 }
 
 /* Datum inputi */
+.stavka-datum {
+  display: flex;            
+  flex-direction: column;   /* Stavi jedan ispod drugog */
+  gap: 12px;                /* Razmak između polja i gumba */
+}
+
 .stavka-datum input[type="date"] {
-  padding: 8px 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 180px;
-  font-size: 0.95rem;
+  padding: 10px 12px;       /* Unutarnji razmak, veći input */
+  border-radius: 8px;       /* Zaobljeni kutovi */
+  border: 1px solid #aaa;   /* Tamniji okvir */
+  width: 250px;             /* Šira polja za datum */
+  font-size: 1rem;          /* Lako čitljiv tekst */
+  outline: none;            /* Makni default outline */
+  transition: 0.2s;         /* Lagana animacija prilikom hovera/fokusa */
+}
+
+.stavka-datum input[type="date"]:focus {
+  border-color: #007BFF;    /* Plava boja kada je fokus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Lagani glow efekt */
 }
 
 /* Gumb potvrdi */
@@ -888,43 +900,42 @@ tbody tr:last-child {
   background-color: #0056b3;
 }
 
-/* Rezultat datuma */
+/* Odabrani datumi (rezultat) */
 .stavka-rezultat p {
-  margin: 5px 0;
-  font-size: 0.95rem;
-  color: #555;
+  margin: 4px 0;
+  font-size: 1rem;
+  color: #333;               /* Tamnija boja za bolju čitljivost */
+  font-weight: 500;
+  background-color: #f0f8ff; /* Blago plava pozadina za isticanje */
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block;      /* Da ne zauzima cijeli red */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lagana sjena */
+  transition: 0.2s;
+}
+
+.stavka-rezultat p:hover {
+  background-color: #e0f0ff; /* Lagani hover efekt */
 }
 
 /* Cijena */
 .stavka-cijena b {
-  color: #28a745; /* zelena boja za cijenu */
-  font-size: 1.1rem;
-}
-
-/* Desni sažetak - ukupno */
-.kosarica-sazetak {
-  background-color: #f3f3f3;
-  padding: 15px;
+  color: #28a745;             /* Zelena boja za cijenu */
+  font-size: 1.3rem;          /* Veći font da se istakne */
+  font-weight: 700;            /* Deblji tekst */
+  background-color: #e6f4ea;   /* Blago zelena pozadina */
+  padding: 5px 12px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: inline-block;
+  transition: 0.2s;
 }
 
-.kosarica-sazetak .btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+.stavka-cijena b:hover {
+  background-color: #d4efd5;  /* Lagani hover efekt */
 }
 
-.kosarica-sazetak .btn:hover {
-  background-color: #1e7e34;
-}
+
 
 /* Mala responsivnost za mobilne uređaje */
 @media screen and (max-width: 768px) {
