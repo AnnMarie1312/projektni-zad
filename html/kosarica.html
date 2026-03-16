@@ -68,6 +68,7 @@
 </footer>
 
 <script>
+
 const proizvod = JSON.parse(localStorage.getItem("kosarica"));
 const box = document.getElementById("kosaricaBox");
 const btn = document.getElementById("checkoutBtn");
@@ -78,8 +79,13 @@ const cijeneDestinacija = {
   "Rim": { cijena: 950, dani: 4 },
   "Istanbul": { cijena: 1800, dani: 7 }
 };
-  
+
 if (proizvod) {
+
+  const destinacija = proizvod.naziv;
+  const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
+  const osnovniDani = cijeneDestinacija[destinacija].dani;
+  const cijenaPoDanu = osnovnaCijena / osnovniDani;
 
   box.innerHTML = `
     <div class="stavka-naziv"><b>${proizvod.naziv}</b></div>
@@ -136,44 +142,9 @@ if (proizvod) {
 
   });
 
-}
-
-  ukupno.textContent = `${proizvod.cijena} €`;
-
-  btn.addEventListener("click", () => window.location.href = "checkout.html");
-
-  // input
-  const polazakInput = document.getElementById("polazakInput");
-  const povratakInput = document.getElementById("povratakInput");
-  const potvrdiBtn = document.getElementById("potvrdiDatume");
-  const cijenaIspis = document.getElementById("cijenaIspis");
-  const datumIspis = document.getElementById("datumIspis");
-
-  const destinacija = proizvod.naziv;
-
-  const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
-  const osnovniDani = cijeneDestinacija[destinacija].dani;
-
-  const cijenaPoDanu = osnovnaCijena / osnovniDani;
-
-  function izracunajCijenu() {
-
-    const polazak = new Date(polazakInput.value);
-    const povratak = new Date(povratakInput.value);
-
-    if (polazakInput.value && povratakInput.value && povratak > polazak) {
-
-      const razlika = povratak - polazak;
-      const brojDana = razlika / (1000 * 60 * 60 * 24);
-      const novaCijena = brojDana * cijenaPoDanu;
-
-      cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
-      ukupno.textContent = novaCijena.toFixed(2) + " €";
-    }
-  }
-
-  polazakInput.addEventListener("change", izracunajCijenu);
-  povratakInput.addEventListener("change", izracunajCijenu);
+  btn.addEventListener("click", () => {
+    window.location.href = "checkout.html";
+  });
 
 } else {
 
@@ -183,7 +154,9 @@ if (proizvod) {
   btn.disabled = true;
   btn.style.opacity = "0.5";
   btn.style.cursor = "not-allowed";
+
 }
+
 </script>
 
 </body>
