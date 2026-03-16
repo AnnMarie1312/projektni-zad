@@ -736,7 +736,7 @@ tbody tr:last-child {
 
 }
 
-/* ------------------ KOŠARICA STRANICA ------------------ */
+/*  KOŠARICA STRANICA  */
 
 .kosarica-stranica {
   max-width: 1100px;
@@ -912,4 +912,18 @@ tbody tr:last-child {
 
 }
 
+.stavka-rezultat {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
+.stavka-rezultat p {
+  background: #e9eef3;
+  color: #333;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
