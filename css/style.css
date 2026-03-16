@@ -845,3 +845,96 @@ tbody tr:last-child {
 
 }
 
+/* Košarica - stavka rezervacije */
+.kosarica-stavka {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Naziv destinacije */
+.stavka-naziv {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Datum inputi */
+.stavka-datum input[type="date"] {
+  padding: 8px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 180px;
+  font-size: 0.95rem;
+}
+
+/* Gumb potvrdi */
+#potvrdiDatume {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#potvrdiDatume:hover {
+  background-color: #0056b3;
+}
+
+/* Rezultat datuma */
+.stavka-rezultat p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Cijena */
+.stavka-cijena b {
+  color: #28a745; /* zelena boja za cijenu */
+  font-size: 1.1rem;
+}
+
+/* Desni sažetak - ukupno */
+.kosarica-sazetak {
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.kosarica-sazetak .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.kosarica-sazetak .btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Mala responsivnost za mobilne uređaje */
+@media screen and (max-width: 768px) {
+  .kosarica-raspored {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kosarica-kartica, .kosarica-sazetak {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
