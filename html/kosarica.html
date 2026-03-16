@@ -42,10 +42,6 @@
         <a class="kosarica-link" href="index.html">← Nastavi pregled destinacija</a>
       </div>
     </div>
-      <div class="stavka-datum">
-          Polazak: <input type="date" id="polazakInput" value="${proizvod.polazak}">
-          Povratak: <input type="date" id="povratakInput" value="${proizvod.povratak}">
-      </div>
     
 
     <!-- DESNO: SAŽETAK -->
@@ -72,7 +68,7 @@
 </footer>
 
 <script>
-  const proizvod = JSON.parse(localStorage.getItem("kosarica"));
+const proizvod = JSON.parse(localStorage.getItem("kosarica"));
 const box = document.getElementById("kosaricaBox");
 const btn = document.getElementById("checkoutBtn");
 const ukupno = document.getElementById("ukupnoIznos");
@@ -82,15 +78,22 @@ const cijeneDestinacija = {
   "Rim": { cijena: 950, dani: 4 },
   "Istanbul": { cijena: 1800, dani: 7 }
 };
-
+  
 if (proizvod) {
 
   box.innerHTML = `
     <div class="stavka-naziv"><b>${proizvod.naziv}</b></div>
 
     <div class="stavka-datum">
-      Polazak: <input type="date" id="polazakInput">
-      Povratak: <input type="date" id="povratakInput">
+      Polazak: <input type="date" id="polazakInput"><br>
+      Povratak: <input type="date" id="povratakInput"><br><br>
+
+      <button id="potvrdiDatume">Potvrdi</button>
+    </div>
+
+    <div class="stavka-rezultat">
+      <p>Odabrani datumi:</p>
+      <p id="datumIspis">Nisu odabrani</p>
     </div>
 
     <div class="stavka-cijena">
@@ -100,12 +103,51 @@ if (proizvod) {
 
   ukupno.textContent = `${proizvod.cijena} €`;
 
+  const polazakInput = document.getElementById("polazakInput");
+  const povratakInput = document.getElementById("povratakInput");
+  const potvrdiBtn = document.getElementById("potvrdiDatume");
+  const cijenaIspis = document.getElementById("cijenaIspis");
+  const datumIspis = document.getElementById("datumIspis");
+
+  potvrdiBtn.addEventListener("click", function() {
+
+    const polazak = new Date(polazakInput.value);
+    const povratak = new Date(povratakInput.value);
+
+    if (!polazakInput.value || !povratakInput.value) {
+      alert("Molimo odaberite datume!");
+      return;
+    }
+
+    if (povratak <= polazak) {
+      alert("Povratak mora biti nakon polaska!");
+      return;
+    }
+
+    const razlika = povratak - polazak;
+    const brojDana = razlika / (1000 * 60 * 60 * 24);
+
+    const novaCijena = brojDana * cijenaPoDanu;
+
+    cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
+    ukupno.textContent = novaCijena.toFixed(2) + " €";
+
+    datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
+
+  });
+
+}
+
+  ukupno.textContent = `${proizvod.cijena} €`;
+
   btn.addEventListener("click", () => window.location.href = "checkout.html");
 
   // input
   const polazakInput = document.getElementById("polazakInput");
   const povratakInput = document.getElementById("povratakInput");
+  const potvrdiBtn = document.getElementById("potvrdiDatume");
   const cijenaIspis = document.getElementById("cijenaIspis");
+  const datumIspis = document.getElementById("datumIspis");
 
   const destinacija = proizvod.naziv;
 
@@ -122,9 +164,7 @@ if (proizvod) {
     if (polazakInput.value && povratakInput.value && povratak > polazak) {
 
       const razlika = povratak - polazak;
-
       const brojDana = razlika / (1000 * 60 * 60 * 24);
-
       const novaCijena = brojDana * cijenaPoDanu;
 
       cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
