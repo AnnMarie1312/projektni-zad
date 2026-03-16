@@ -957,4 +957,13 @@ tbody tr:last-child {
   color: #333;
 }
 
+.stavka-cijena {
+  text-align: center;
+  margin-top: 15px;
+}
 
+.stavka-datum label {
+  background: none;
+  font-weight: 600;
+  color: #333;
+}
