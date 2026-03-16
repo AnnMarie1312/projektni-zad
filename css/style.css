@@ -736,116 +736,180 @@ tbody tr:last-child {
 
 }
 
-/* Košarica - stavka rezervacije */
-.kosarica-stavka {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+/* ------------------ KOŠARICA STRANICA ------------------ */
+
+.kosarica-stranica {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* NASLOV */
+
+.kosarica-naslov {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.kosarica-naslov h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.kosarica-opis {
+  opacity: 0.8;
+}
+
+/*  RASPORED  */
+
+.kosarica-raspored {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* KARTICE */
+
+.kosarica-kartica,
+.kosarica-sazetak {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
   padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.kosarica-podnaslov {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/*  STAVKA  */
+
+.kosarica-stavka {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
 }
 
 /* Naziv destinacije */
+
 .stavka-naziv {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
-/* Datum inputi */
+/*  DATUMI  */
+
 .stavka-datum {
-  display: flex;            
-  flex-direction: column;   /* Stavi jedan ispod drugog */
-  gap: 12px;                /* Razmak između polja i gumba */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stavka-datum label {
+  font-weight: 600;
 }
 
 .stavka-datum input[type="date"] {
-  padding: 10px 12px;       /* Unutarnji razmak, veći input */
-  border-radius: 8px;       /* Zaobljeni kutovi */
-  border: 1px solid #aaa;   /* Tamniji okvir */
-  width: 250px;             /* Šira polja za datum */
-  font-size: 1rem;          /* Lako čitljiv tekst */
-  outline: none;            /* Makni default outline */
-  transition: 0.2s;         /* Lagana animacija prilikom hovera/fokusa */
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  width: 250px;
+  font-size: 1rem;
 }
 
 .stavka-datum input[type="date"]:focus {
-  border-color: #007BFF;    /* Plava boja kada je fokus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Lagani glow efekt */
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0,123,255,0.4);
+  outline: none;
 }
 
-/* Gumb potvrdi */
+/* GUMB */
+
 #potvrdiDatume {
   background-color: #007BFF;
   color: white;
   border: none;
   padding: 10px 20px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 #potvrdiDatume:hover {
   background-color: #0056b3;
 }
 
-/* Odabrani datumi (rezultat) */
+/*  REZULTAT  */
+
 .stavka-rezultat p {
-  margin: 4px 0;
+  margin: 5px 0;
   font-size: 1rem;
-  color: #333;               /* Tamnija boja za bolju čitljivost */
-  font-weight: 500;
-  background-color: #f0f8ff; /* Blago plava pozadina za isticanje */
+  background-color: #f0f8ff;
   padding: 6px 10px;
   border-radius: 6px;
-  display: inline-block;      /* Da ne zauzima cijeli red */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lagana sjena */
-  transition: 0.2s;
-}
-
-.stavka-rezultat p:hover {
-  background-color: #e0f0ff; /* Lagani hover efekt */
-}
-
-/* Cijena */
-.stavka-cijena b {
-  color: #28a745;             /* Zelena boja za cijenu */
-  font-size: 1.3rem;          /* Veći font da se istakne */
-  font-weight: 700;            /* Deblji tekst */
-  background-color: #e6f4ea;   /* Blago zelena pozadina */
-  padding: 5px 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   display: inline-block;
-  transition: 0.2s;
-  text-align: center;
+}
+
+/*  CIJENA  */
+
+.stavka-cijena b {
+  color: #28a745;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: #e6f4ea;
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: inline-block;
   margin-top: 15px;
 }
 
-.stavka-cijena b:hover {
-  background-color: #d4efd5;  /* Lagani hover efekt */
+/*  SAŽETAK */
+
+.sazetak-red {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin: 10px 0 14px;
 }
 
+.kosarica-akcije {
+  margin-top: 15px;
+}
 
-/* Mala responsivnost za mobilne uređaje */
-@media screen and (max-width: 768px) {
+.kosarica-link {
+  color: #8fd1ff;
+  text-decoration: none;
+}
+
+.kosarica-link:hover {
+  text-decoration: underline;
+}
+
+.kosarica-napomena {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* RESPONSIVE  */
+
+@media (max-width: 900px) {
+
   .kosarica-raspored {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
-  .kosarica-kartica, .kosarica-sazetak {
-    width: 100%;
-    margin-bottom: 20px;
+  .kosarica-naslov h1 {
+    font-size: 36px;
   }
-}
 
-.stavka-datum label {
-  background: none;
-  font-weight: 600;
-  color: #333;
 }
 
 
