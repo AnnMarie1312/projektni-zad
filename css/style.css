@@ -936,7 +936,6 @@ tbody tr:last-child {
 }
 
 
-
 /* Mala responsivnost za mobilne uređaje */
 @media screen and (max-width: 768px) {
   .kosarica-raspored {
@@ -949,3 +948,14 @@ tbody tr:last-child {
     margin-bottom: 20px;
   }
 }
+
+#polazakInput,
+#povratakInput {
+  color: #333333;       /* tamno siva boja teksta */
+  background-color: #ffffff; /* bijela pozadina da se vidi tekst */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 1rem;
+}
+
