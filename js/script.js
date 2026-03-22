@@ -30,7 +30,7 @@ if (form) {
   });
 }
 
-// ===== HERO DIJAGONALNI WIPE (GSAP ScrollTrigger) =====
+//  HERO DIJAGONALNI WIPE (GSAP ScrollTrigger) 
 if (document.querySelector("#container") && document.querySelector("#target")) {
   gsap.config({ trialWarn: false });
   gsap.registerPlugin(ScrollTrigger);
