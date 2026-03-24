@@ -118,7 +118,7 @@ if (proizvod) {
   const polazakInput = document.getElementById("polazakInput");
   const povratakInput = document.getElementById("povratakInput");
   const potvrdiBtn = document.getElementById("potvrdiDatume");
-  const cijenaIspis = document.getElementById("cijenaIspis");
+  const cijenaIspis = document.getElementById("cijenaIspis") || null;
   const datumIspis = document.getElementById("datumIspis");
 
   potvrdiBtn.addEventListener("click", function() {
@@ -200,7 +200,7 @@ function azurirajKolicinu() {
 
   localStorage.setItem("kosarica", JSON.stringify(proizvod));
 
-  prikaziKosaricu(); // ✅ refresh
+  prikaziKosaricu(); //  refresh
 }
 
 
