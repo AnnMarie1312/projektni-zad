@@ -172,7 +172,8 @@ if (proizvod) {
   <script>
     function prikaziKosaricu() {
       const kosarica = JSON.parse(localStorage.getItem("kosarica"));
-    
+      const container = document.getElementById("kosarica-prikaz");
+
       const container = document.getElementById("kosarica-prikaz");
     
       if (!kosarica) {
