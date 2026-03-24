@@ -217,14 +217,15 @@ function prikaziKosaricu() {
   }
 
   container.innerHTML = `
-    <div class="kosarica-summary">
-      <h3>Detalji rezervacije</h3>
-      <p><span>Destinacija:</span> ${kosarica.naziv}</p>
-      <p><span>Polazak:</span> ${kosarica.polazak || "-"}</p>
-      <p><span>Povratak:</span> ${kosarica.povratak || "-"}</p>
-      <p class="cijena"><span>Ukupno:</span> €${kosarica.cijena}</p>
-    </div>
+  <div class="kosarica-summary">
+    <h3>Detalji rezervacije</h3>
+    <p><span>Destinacija:</span> ${kosarica.naziv}</p>
+    <p><span>Polazak:</span> ${kosarica.polazak || "-"}</p>
+    <p><span>Povratak:</span> ${kosarica.povratak || "-"}</p>
+    <p class="cijena"><span>Ukupno:</span> €${kosarica.cijena}</p>
+  </div>
 `;
+} 
 
 function obrisiKosaricu() {
   localStorage.removeItem("kosarica");
