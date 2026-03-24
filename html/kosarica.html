@@ -73,7 +73,6 @@
 </footer>
 
 <script>
-
 const proizvod = JSON.parse(localStorage.getItem("kosarica"));
 const box = document.getElementById("kosaricaBox");
 const btn = document.getElementById("checkoutBtn");
@@ -112,7 +111,6 @@ if (proizvod) {
       <p id="datumIspis">Nisu odabrani</p>
     </div>
 
-
     <div class="stavka-cijena">
       Cijena: <b id="cijenaIspis">${proizvod.cijena} €</b>
     </div>
@@ -144,13 +142,21 @@ if (proizvod) {
     const razlika = povratak - polazak;
     const brojDana = razlika / (1000 * 60 * 60 * 24);
 
-    const novaCijena = brojDana * cijenaPoDanu;
+    const novaCijena = brojDana * cijenaPoDanu * (proizvod.kolicina || 1);
 
     cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
     ukupno.textContent = novaCijena.toFixed(2) + " €";
 
     datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
 
+    // ✅ SPREMI (ovo ti je falilo)
+    proizvod.polazak = polazakInput.value;
+    proizvod.povratak = povratakInput.value;
+    proizvod.cijena = novaCijena;
+
+    localStorage.setItem("kosarica", JSON.stringify(proizvod));
+
+    prikaziKosaricu(); // ✅ refresh prikaza
   });
 
   btn.addEventListener("click", () => {
@@ -163,103 +169,75 @@ if (proizvod) {
   ukupno.textContent = `0 €`;
 
   btn.disabled = true;
-  btn.style.opacity = "0.5";
-  btn.style.cursor = "not-allowed";
-
 }
 </script>
-  
-  <script>
-    function prikaziKosaricu() {
-      const kosarica = JSON.parse(localStorage.getItem("kosarica"));
-      const container = document.getElementById("kosarica-prikaz");
 
-      const container = document.getElementById("kosarica-prikaz");
-    
-      if (!kosarica) {
-        container.innerHTML = "<p>Košarica je prazna.</p>";
-        return;
-      }
-        function azurirajKolicinu() {
-        const kolicina = parseInt(document.getElementById("kolicina").value);
-        if (isNaN(kolicina) || kolicina < 1) {
-          alert("Količina mora biti najmanje 1!");
-          return;
-        }
-      
-        const destinacija = proizvod.naziv;
-        const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
-        const ukupnaCijena = osnovnaCijena * kolicina;
-      
-        document.getElementById("cijenaIspis").textContent = ukupnaCijena.toFixed(2) + " €";
-        document.getElementById("ukupnoIznos").textContent = ukupnaCijena.toFixed(2) + " €";
-      
-        // Spremi u localStorage
-        proizvod.kolicina = kolicina;
-        proizvod.cijena = ukupnaCijena;
-        localStorage.setItem("kosarica", JSON.stringify(proizvod));
-      
-        // Sinkroniziraj gornji prikaz
-        prikaziKosaricu();
-      }
 
-      potvrdiBtn.addEventListener("click", function() {
-        
-          const polazak = new Date(polazakInput.value);
-          const povratak = new Date(povratakInput.value);
-        
-          if (!polazakInput.value || !povratakInput.value) {
-            alert("Molimo odaberite datume!");
-            return;
-          }
-        
-          if (povratak <= polazak) {
-            alert("Povratak mora biti nakon polaska!");
-            return;
-          }
-        
-          const razlika = povratak - polazak;
-          const brojDana = razlika / (1000 * 60 * 60 * 24);
-        
-          const novaCijena = brojDana * cijenaPoDanu * (proizvod.kolicina || 1);
-        
-          cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
-          ukupno.textContent = novaCijena.toFixed(2) + " €";
-        
-          datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
-        
-          // Spremi u localStorage i sinkroniziraj gornji prikaz
-          proizvod.polazak = polazakInput.value;
-          proizvod.povratak = povratakInput.value;
-          proizvod.cijena = novaCijena;
-        
-          localStorage.setItem("kosarica", JSON.stringify(proizvod));
-          prikaziKosaricu();
-        });
-      
-    
-      container.innerHTML = `
-        <p><strong>Destinacija:</strong> ${kosarica.naziv}</p>
-        <p><strong>Polazak:</strong> ${kosarica.polazak}</p>
-        <p><strong>Povratak:</strong> ${kosarica.povratak}</p>
-        <p><strong>Cijena:</strong> €${kosarica.cijena}</p>
-      `;
-    }
-    
-    function obrisiKosaricu() {
-      localStorage.removeItem("kosarica");
-      prikaziKosaricu();
-      
-      const box = document.getElementById("kosaricaBox");
-      box.innerHTML = `<p class="prazno">Košarica je prazna.</p>`;
-      document.getElementById("ukupnoIznos").textContent = `0 €`;
-          
-    }
+<script>
+// ✅ GLOBALNA funkcija (popravljeno)
+function azurirajKolicinu() {
+  const proizvod = JSON.parse(localStorage.getItem("kosarica"));
+  const kolicina = parseInt(document.getElementById("kolicina").value);
 
-// automatski prikaz kad se stranica učita
+  if (isNaN(kolicina) || kolicina < 1) {
+    alert("Količina mora biti najmanje 1!");
+    return;
+  }
+
+  const cijeneDestinacija = {
+    "Pariz": { cijena: 1200, dani: 5 },
+    "Rim": { cijena: 950, dani: 4 },
+    "Istanbul": { cijena: 1800, dani: 7 }
+  };
+
+  const destinacija = proizvod.naziv;
+  const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
+
+  const ukupnaCijena = osnovnaCijena * kolicina;
+
+  document.getElementById("cijenaIspis").textContent = ukupnaCijena.toFixed(2) + " €";
+  document.getElementById("ukupnoIznos").textContent = ukupnaCijena.toFixed(2) + " €";
+
+  proizvod.kolicina = kolicina;
+  proizvod.cijena = ukupnaCijena;
+
+  localStorage.setItem("kosarica", JSON.stringify(proizvod));
+
+  prikaziKosaricu(); // ✅ refresh
+}
+
+
+// tvoja funkcija ostaje (minimalno dirnuta)
+function prikaziKosaricu() {
+  const kosarica = JSON.parse(localStorage.getItem("kosarica"));
+  const container = document.getElementById("kosarica-prikaz");
+
+  if (!kosarica) {
+    container.innerHTML = "<p>Košarica je prazna.</p>";
+    return;
+  }
+
+  container.innerHTML = `
+    <p><strong>Destinacija:</strong> ${kosarica.naziv}</p>
+    <p><strong>Polazak:</strong> ${kosarica.polazak || "-"}</p>
+    <p><strong>Povratak:</strong> ${kosarica.povratak || "-"}</p>
+    <p><strong>Cijena:</strong> €${kosarica.cijena}</p>
+  `;
+}
+
+function obrisiKosaricu() {
+  localStorage.removeItem("kosarica");
+  prikaziKosaricu();
+
+  document.getElementById("kosaricaBox").innerHTML =
+    `<p class="prazno">Košarica je prazna.</p>`;
+
+  document.getElementById("ukupnoIznos").textContent = `0 €`;
+}
+
+// auto load
 prikaziKosaricu();
 </script>
-
   
 
 </body>
