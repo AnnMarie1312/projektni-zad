@@ -118,7 +118,6 @@ if (proizvod) {
   const polazakInput = document.getElementById("polazakInput");
   const povratakInput = document.getElementById("povratakInput");
   const potvrdiBtn = document.getElementById("potvrdiDatume");
-  const cijenaIspis = document.getElementById("cijenaIspis") || null;
   const datumIspis = document.getElementById("datumIspis");
 
   potvrdiBtn.addEventListener("click", function() {
@@ -141,7 +140,6 @@ if (proizvod) {
 
     const novaCijena = brojDana * cijenaPoDanu * (proizvod.kolicina || 1);
 
-    cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
     ukupno.textContent = novaCijena.toFixed(2) + " €";
 
     datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
@@ -191,8 +189,8 @@ function azurirajKolicinu() {
   const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
 
   const ukupnaCijena = osnovnaCijena * kolicina;
-
-  document.getElementById("cijenaIspis").textContent = ukupnaCijena.toFixed(2) + " €";
+  
+  document.getElementById("cijenaIspis").textContent = ...
   document.getElementById("ukupnoIznos").textContent = ukupnaCijena.toFixed(2) + " €";
 
   proizvod.kolicina = kolicina;
