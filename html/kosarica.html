@@ -197,31 +197,7 @@ if (proizvod) {
 prikaziKosaricu();
 </script>
 
-  <script>
-        function azurirajKolicinu() {
-      const kolicina = parseInt(document.getElementById("kolicina").value);
-      if (isNaN(kolicina) || kolicina < 1) {
-        alert("Količina mora biti najmanje 1!");
-        return;
-      }
-    
-      const destinacija = proizvod.naziv;
-      const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
-      const ukupnaCijena = osnovnaCijena * kolicina;
-    
-      // Ažuriraj prikaz cijene
-      document.getElementById("cijenaIspis").textContent = ukupnaCijena.toFixed(2) + " €";
-      document.getElementById("ukupnoIznos").textContent = ukupnaCijena.toFixed(2) + " €";
-    
-      // Spremi u localStorage
-      proizvod.kolicina = kolicina;
-      proizvod.cijena = ukupnaCijena;
-      localStorage.setItem("kosarica", JSON.stringify(proizvod));
-    
-      // Sinkroniziraj gornji prikaz košarice
-      prikaziKosaricu();
-    }
-</script>
+  
 
 </body>
 
