@@ -16,7 +16,7 @@ if (form) {
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   const emailRegex = /^[^\s@]{2,}@[^\s@]{2,}\.[^\s@]{2,}$/;
 
     if (!emailRegex.test(email)) {
       alert("Neispravan email!");
