@@ -28,6 +28,8 @@
 
   <section class="kosarica-naslov">
     <h1>Košarica</h1>
+    <div id="kosarica-prikaz"></div>
+    <button onclick="obrisiKosaricu()" class="btn">Obriši košaricu</button>
     <p class="kosarica-opis">Provjerite detalje rezervacije prije plaćanja.</p>
   </section>
 
@@ -42,6 +44,8 @@
       <div class="kosarica-akcije">
         <a class="kosarica-link" href="index.html">← Nastavi pregled destinacija</a>
       </div>
+
+      
     </div>
     
 
@@ -98,10 +102,16 @@ if (proizvod) {
       <button id="potvrdiDatume">Potvrdi</button>
     </div>
 
+    <div class="stavka-kolicina">
+      Količina: <input type="number" id="kolicina" value="1" min="1">
+      <button onclick="azurirajKolicinu()">Ažuriraj količinu</button>
+    </div>
+
     <div class="stavka-rezultat">
       <p>Odabrani datumi:</p>
       <p id="datumIspis">Nisu odabrani</p>
     </div>
+
 
     <div class="stavka-cijena">
       Cijena: <b id="cijenaIspis">${proizvod.cijena} €</b>
@@ -157,7 +167,48 @@ if (proizvod) {
   btn.style.cursor = "not-allowed";
 
 }
+</script>
+  
+  <script>
+    function prikaziKosaricu() {
+      const kosarica = JSON.parse(localStorage.getItem("kosarica"));
+    
+      const container = document.getElementById("kosarica-prikaz");
+    
+      if (!kosarica) {
+        container.innerHTML = "<p>Košarica je prazna.</p>";
+        return;
+      }
+    
+      container.innerHTML = `
+        <p><strong>Destinacija:</strong> ${kosarica.naziv}</p>
+        <p><strong>Polazak:</strong> ${kosarica.polazak}</p>
+        <p><strong>Povratak:</strong> ${kosarica.povratak}</p>
+        <p><strong>Cijena:</strong> €${kosarica.cijena}</p>
+      `;
+    }
+    
+    function obrisiKosaricu() {
+      localStorage.removeItem("kosarica");
+      prikaziKosaricu();
+}
 
+// automatski prikaz kad se stranica učita
+prikaziKosaricu();
+</script>
+
+  <script>
+    function azurirajKolicinu() {
+      let kosarica = JSON.parse(localStorage.getItem("kosarica"));
+    
+      const novaKolicina = document.getElementById("kolicina").value;
+    
+      kosarica.kolicina = novaKolicina;
+    
+      localStorage.setItem("kosarica", JSON.stringify(kosarica));
+    
+      prikaziKosaricu();
+    }
 </script>
 
 </body>
