@@ -16,6 +16,13 @@ if (form) {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      alert("Neispravan email!");
+      return;
+    }
+
     const rezervacija = { ime, email, destinacija, datum, poruka };
 
     let rezervacije = JSON.parse(localStorage.getItem('rezervacije')) || [];
