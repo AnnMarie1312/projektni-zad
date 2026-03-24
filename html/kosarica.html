@@ -180,6 +180,63 @@ if (proizvod) {
         container.innerHTML = "<p>Košarica je prazna.</p>";
         return;
       }
+        function azurirajKolicinu() {
+        const kolicina = parseInt(document.getElementById("kolicina").value);
+        if (isNaN(kolicina) || kolicina < 1) {
+          alert("Količina mora biti najmanje 1!");
+          return;
+        }
+      
+        const destinacija = proizvod.naziv;
+        const osnovnaCijena = cijeneDestinacija[destinacija].cijena;
+        const ukupnaCijena = osnovnaCijena * kolicina;
+      
+        document.getElementById("cijenaIspis").textContent = ukupnaCijena.toFixed(2) + " €";
+        document.getElementById("ukupnoIznos").textContent = ukupnaCijena.toFixed(2) + " €";
+      
+        // Spremi u localStorage
+        proizvod.kolicina = kolicina;
+        proizvod.cijena = ukupnaCijena;
+        localStorage.setItem("kosarica", JSON.stringify(proizvod));
+      
+        // Sinkroniziraj gornji prikaz
+        prikaziKosaricu();
+      }
+
+      potvrdiBtn.addEventListener("click", function() {
+        
+          const polazak = new Date(polazakInput.value);
+          const povratak = new Date(povratakInput.value);
+        
+          if (!polazakInput.value || !povratakInput.value) {
+            alert("Molimo odaberite datume!");
+            return;
+          }
+        
+          if (povratak <= polazak) {
+            alert("Povratak mora biti nakon polaska!");
+            return;
+          }
+        
+          const razlika = povratak - polazak;
+          const brojDana = razlika / (1000 * 60 * 60 * 24);
+        
+          const novaCijena = brojDana * cijenaPoDanu * (proizvod.kolicina || 1);
+        
+          cijenaIspis.textContent = novaCijena.toFixed(2) + " €";
+          ukupno.textContent = novaCijena.toFixed(2) + " €";
+        
+          datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
+        
+          // Spremi u localStorage i sinkroniziraj gornji prikaz
+          proizvod.polazak = polazakInput.value;
+          proizvod.povratak = povratakInput.value;
+          proizvod.cijena = novaCijena;
+        
+          localStorage.setItem("kosarica", JSON.stringify(proizvod));
+          prikaziKosaricu();
+        });
+      
     
       container.innerHTML = `
         <p><strong>Destinacija:</strong> ${kosarica.naziv}</p>
@@ -192,7 +249,12 @@ if (proizvod) {
     function obrisiKosaricu() {
       localStorage.removeItem("kosarica");
       prikaziKosaricu();
-}
+      
+      const box = document.getElementById("kosaricaBox");
+      box.innerHTML = `<p class="prazno">Košarica je prazna.</p>`;
+      document.getElementById("ukupnoIznos").textContent = `0 €`;
+          
+    }
 
 // automatski prikaz kad se stranica učita
 prikaziKosaricu();
