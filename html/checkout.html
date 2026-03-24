@@ -55,11 +55,21 @@
 </footer>
 
 <script>
-  document.getElementById("forma").addEventListener("submit", function (e) {
-    e.preventDefault();
-    localStorage.removeItem("kosarica");
-    window.location.href = "hvala.html";
-  });
+    document.getElementById("forma").addEventListener("submit", function (e) {
+      e.preventDefault();
+    
+      const email = document.querySelector('input[name="email"]').value;
+    
+      const emailRegex = /^[^\s@]{2,}@[^\s@]{2,}\.[^\s@]{2,}$/;
+    
+      if (!emailRegex.test(email)) {
+        alert("Email mora imati barem 2 znaka prije i poslije @ te 2 nakon točke!");
+        return;
+      }
+    
+      localStorage.removeItem("kosarica");
+      window.location.href = "hvala.html";
+    });
 </script>
 
 </body>
