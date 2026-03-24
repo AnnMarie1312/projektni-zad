@@ -114,19 +114,38 @@
   });
 </script>
 
-  <script>
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true")
-    .then(response => response.json())
-    .then(data => {
-      const temp = data.current_weather.temperature;
-      const wind = data.current_weather.windspeed;
-  
-      document.getElementById("vrijeme").innerText =
-        "Temperatura: " + temp + "°C | Vjetar: " + wind + " km/h";
-    })
-    .catch(error => {
-      document.getElementById("vrijeme").innerText = "Nije moguće dohvatiti podatke.";
-    });
+ <script>
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true")
+      .then(response => response.json())
+      .then(data => {
+        const temp = data.current_weather.temperature;
+        const code = data.current_weather.weathercode;
+    
+        let ikona = "";
+    
+        // Mapiranje weather code → ikona
+        if (code === 0) {
+          ikona = "☀️"; // sunčano
+        } else if (code >= 1 && code <= 3) {
+          ikona = "⛅"; // djelomično oblačno
+        } else if (code >= 45 && code <= 48) {
+          ikona = "🌫️"; // magla
+        } else if (code >= 51 && code <= 67) {
+          ikona = "🌧️"; // kiša
+        } else if (code >= 71 && code <= 77) {
+          ikona = "❄️"; // snijeg
+        } else if (code >= 80 && code <= 99) {
+          ikona = "⛈️"; // pljuskovi/oluja
+        } else {
+          ikona = "🌡️";
+        }
+    
+        document.getElementById("vrijeme").innerText =
+          ikona + " " + temp + "°C";
+      })
+      .catch(error => {
+        document.getElementById("vrijeme").innerText = "Greška pri dohvaćanju vremena.";
+      });
 </script>
 </body>
 
