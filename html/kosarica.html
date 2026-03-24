@@ -149,7 +149,7 @@ if (proizvod) {
 
     datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
 
-    // ✅ SPREMI (ovo ti je falilo)
+    // ✅ SPREMI 
     proizvod.polazak = polazakInput.value;
     proizvod.povratak = povratakInput.value;
     proizvod.cijena = novaCijena;
@@ -174,7 +174,7 @@ if (proizvod) {
 
 
 <script>
-// ✅ GLOBALNA funkcija (popravljeno)
+// ✅ GLOBALNA funkcija 
 function azurirajKolicinu() {
   const proizvod = JSON.parse(localStorage.getItem("kosarica"));
   const kolicina = parseInt(document.getElementById("kolicina").value);
@@ -207,7 +207,6 @@ function azurirajKolicinu() {
 }
 
 
-// tvoja funkcija ostaje (minimalno dirnuta)
 function prikaziKosaricu() {
   const kosarica = JSON.parse(localStorage.getItem("kosarica"));
   const container = document.getElementById("kosarica-prikaz");
@@ -218,12 +217,14 @@ function prikaziKosaricu() {
   }
 
   container.innerHTML = `
-    <p><strong>Destinacija:</strong> ${kosarica.naziv}</p>
-    <p><strong>Polazak:</strong> ${kosarica.polazak || "-"}</p>
-    <p><strong>Povratak:</strong> ${kosarica.povratak || "-"}</p>
-    <p><strong>Cijena:</strong> €${kosarica.cijena}</p>
-  `;
-}
+    <div class="kosarica-summary">
+      <h3>Detalji rezervacije</h3>
+      <p><span>Destinacija:</span> ${kosarica.naziv}</p>
+      <p><span>Polazak:</span> ${kosarica.polazak || "-"}</p>
+      <p><span>Povratak:</span> ${kosarica.povratak || "-"}</p>
+      <p class="cijena"><span>Ukupno:</span> €${kosarica.cijena}</p>
+    </div>
+`;
 
 function obrisiKosaricu() {
   localStorage.removeItem("kosarica");
