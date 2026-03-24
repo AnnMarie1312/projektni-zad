@@ -932,3 +932,74 @@ tbody tr:last-child {
   font-size: 18px;
   font-weight: bold;
 }
+
+.kosarica-summary {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 15px 20px;
+  width: fit-content;
+  margin: 0 auto 20px auto;
+  text-align: left;
+}
+
+.kosarica-summary h3 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.kosarica-summary p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.kosarica-summary span {
+  color: #888;
+}
+
+.kosarica-summary .cijena {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #00ff99;
+  font-weight: bold;
+}
+
+input[type="date"],
+input[type="number"] {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+button {
+  background: #1e88e5;
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+.stavka-datum,
+.stavka-kolicina,
+.stavka-rezultat,
+.stavka-cijena {
+  margin-top: 15px;
+}
+
+
+#cijenaIspis {
+  background: #1f3d2b;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #00ff99;
+}
+
