@@ -42,6 +42,7 @@
       <div class="info-kartica">
         <h3>Najbolje vrijeme</h3>
         <p>Proljeće i rana jesen (ugodnije i manje gužve).</p>
+        <p id="vrijeme">Učitavanje...</p>
       </div>
       <div class="info-kartica">
         <h3>Vibe</h3>
@@ -110,6 +111,21 @@
     window.location.href = "kosarica.html";
   });
 </script>
+<script>
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true")
+    .then(response => response.json())
+    .then(data => {
+      const temp = data.current_weather.temperature;
+      const wind = data.current_weather.windspeed;
+  
+      document.getElementById("vrijeme").innerText =
+        "Temperatura: " + temp + "°C | Vjetar: " + wind + " km/h";
+    })
+    .catch(error => {
+      document.getElementById("vrijeme").innerText = "Nije moguće dohvatiti podatke.";
+    });
+</script>
+  
 
 </body>
 </html>
