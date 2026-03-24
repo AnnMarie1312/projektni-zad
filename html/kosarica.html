@@ -144,7 +144,7 @@ if (proizvod) {
 
     datumIspis.textContent = polazakInput.value + " – " + povratakInput.value;
 
-    // ✅ SPREMI 
+    //  SPREMI 
     proizvod.polazak = polazakInput.value;
     proizvod.povratak = povratakInput.value;
     proizvod.cijena = novaCijena;
@@ -169,7 +169,7 @@ if (proizvod) {
 
 
 <script>
-// ✅ GLOBALNA funkcija 
+//  GLOBALNA funkcija 
 function azurirajKolicinu() {
   const proizvod = JSON.parse(localStorage.getItem("kosarica"));
   const kolicina = parseInt(document.getElementById("kolicina").value);
@@ -217,7 +217,7 @@ function prikaziKosaricu() {
     <p><span>Destinacija:</span> ${kosarica.naziv}</p>
     <p><span>Polazak:</span> ${kosarica.polazak || "-"}</p>
     <p><span>Povratak:</span> ${kosarica.povratak || "-"}</p>
-    <p class="cijena"><span>Ukupno:</span> €${kosarica.cijena.toFixed(2)}</p>
+    <p class="cijena"><span>Ukupno:</span> €${(kosarica.cijena || 0).toFixed(2)}</p>
   </div>
 `;
 } 
