@@ -215,11 +215,7 @@ function prikaziKosaricu() {
     container.innerHTML = "<p>Košarica je prazna.</p>";
     return;
   }
-    if (!kosarica.polazak || !kosarica.povratak) {
-      container.style.display = "none";
-    } else {
-      container.style.display = "block";
-    }
+   
 
   container.innerHTML = `
   <div class="kosarica-summary">
