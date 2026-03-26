@@ -97,6 +97,7 @@ if (proizvod) {
     <div class="stavka-datum">
       Polazak: <input type="date" id="polazakInput"><br>
       Povratak: <input type="date" id="povratakInput"><br><br>
+      
 
       <button id="potvrdiDatume">Potvrdi</button>
     </div>
@@ -117,6 +118,11 @@ if (proizvod) {
 
   const polazakInput = document.getElementById("polazakInput");
   const povratakInput = document.getElementById("povratakInput");
+
+  const danas = new Date().toISOString().split("T")[0];
+  polazakInput.min = danas;
+  povratakInput.min = danas;
+  
   const potvrdiBtn = document.getElementById("potvrdiDatume");
   const datumIspis = document.getElementById("datumIspis");
 
