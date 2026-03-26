@@ -8,6 +8,11 @@ if (datumInput) {
 }
 
 if (form) {
+   //  BLOKIRA stare datume u kalendaru
+  const datumInput = document.getElementById("datum");
+  const danas = new Date().toISOString().split("T")[0];
+  datumInput.min = danas;
+  
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
