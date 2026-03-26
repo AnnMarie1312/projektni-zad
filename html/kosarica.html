@@ -122,6 +122,10 @@ if (proizvod) {
   const danas = new Date().toISOString().split("T")[0];
   polazakInput.min = danas;
   povratakInput.min = danas;
+
+  polazakInput.addEventListener("change", () => {
+  povratakInput.min = polazakInput.value;
+    });
   
   const potvrdiBtn = document.getElementById("potvrdiDatume");
   const datumIspis = document.getElementById("datumIspis");
