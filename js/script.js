@@ -1,5 +1,11 @@
 // ===== KONTAKT FORMA (radi samo ako forma postoji na toj stranici) =====
 const form = document.getElementById('kontaktForm');
+const datumInput = document.getElementById("datum");
+
+if (datumInput) {
+  const danas = new Date().toISOString().split("T")[0];
+  datumInput.min = danas;
+}
 
 if (form) {
   form.addEventListener('submit', function (e) {
