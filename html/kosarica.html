@@ -134,6 +134,15 @@ if (proizvod) {
 
     const polazak = new Date(polazakInput.value);
     const povratak = new Date(povratakInput.value);
+    
+  //  BLOKIRAJ prošle datume
+    const danasDatum = new Date();
+    danasDatum.setHours(0,0,0,0);
+      
+      if (polazak < danasDatum || povratak < danasDatum) {
+        alert("Ne možeš odabrati datum u prošlosti!");
+        return;
+      }
 
     if (!polazakInput.value || !povratakInput.value) {
       alert("Molimo odaberite datume!");
