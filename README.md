@@ -1,15 +1,27 @@
-# TravelWithUs
+ Opis projekta
 
-Web projekt za kolegij.
+TravelWithUs je jednostavna web aplikacija koja omogućuje pregled turističkih destinacija te simulaciju procesa rezervacije putovanja.
 
-Stranica prikazuje turističke destinacije i omogućuje rezervaciju putem kontakt forme.
+Korisnik može:
 
-## Tehnologije
-- HTML
-- CSS
-- JavaScript
-- GSAP animacije
-- GitHub Pages
+-pregledati dostupne destinacije
+-otvoriti detalje putovanja
+-dodati putovanje u košaricu
+-odabrati datum putovanja
+-unijeti podatke za rezervaciju
+-završiti proces narudžbe
 
-## Demo
+ Tehnologije:
+-HTML
+-CSS
+-JavaScript
+-GSAP animacije
+-LocalStorage
+-GitHub Pages
+
+ Demo:
 https://annmarie1312.github.io/projektni-zad/
+
+Autor
+
+Student: Anamarija Katinić
